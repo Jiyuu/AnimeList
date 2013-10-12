@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Data" targetNamespace="http://tempuri.org/Data.xsd" xmlns:mstns="http://tempuri.org/Data.xsd" xmlns="http://tempuri.org/Data.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="animeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="animeConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.AnimesList.Properties.Settings.GlobalReference.Default.animeConnectionString" Provider="Microsoft.SqlServerCe.Client.4.0" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Data" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Data" msprop:Generator_UserDSName="Data">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Schedules" msprop:Generator_TableClassName="SchedulesDataTable" msprop:Generator_TableVarName="tableSchedules" msprop:Generator_TablePropName="Schedules" msprop:Generator_RowDeletingName="SchedulesRowDeleting" msprop:Generator_RowChangingName="SchedulesRowChanging" msprop:Generator_RowEvHandlerName="SchedulesRowChangeEventHandler" msprop:Generator_RowDeletedName="SchedulesRowDeleted" msprop:Generator_UserTableName="Schedules" msprop:Generator_RowChangedName="SchedulesRowChanged" msprop:Generator_RowEvArgName="SchedulesRowChangeEvent" msprop:Generator_RowClassName="SchedulesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Time" msprop:Generator_ColumnVarNameInTable="columnTime" msprop:Generator_ColumnPropNameInRow="Time" msprop:Generator_ColumnPropNameInTable="TimeColumn" msprop:Generator_UserColumnName="Time" type="xs:string" minOccurs="0" />
+              <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
