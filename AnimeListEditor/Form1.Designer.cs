@@ -32,29 +32,29 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Save = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.animeDS = new AnimeListEditor.AnimeDS();
-            this.animeDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.animeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.animeTableAdapter = new AnimeListEditor.AnimeDSTableAdapters.AnimeTableAdapter();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.timeZoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.animeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.animeDSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.animeDS = new AnimeListEditor.AnimeDS();
+            this.animeTableAdapter = new AnimeListEditor.AnimeDSTableAdapters.AnimeTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.animeDS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.animeDSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.animeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animeDSBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animeDS)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.Save);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 221);
+            this.panel1.Location = new System.Drawing.Point(0, 348);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 41);
+            this.panel1.Size = new System.Drawing.Size(550, 41);
             this.panel1.TabIndex = 0;
             // 
             // Save
@@ -81,27 +81,8 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(284, 221);
+            this.dataGridView1.Size = new System.Drawing.Size(550, 348);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // animeDS
-            // 
-            this.animeDS.DataSetName = "AnimeDS";
-            this.animeDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // animeDSBindingSource
-            // 
-            this.animeDSBindingSource.DataSource = this.animeDS;
-            this.animeDSBindingSource.Position = 0;
-            // 
-            // animeBindingSource
-            // 
-            this.animeBindingSource.DataMember = "Anime";
-            this.animeBindingSource.DataSource = this.animeDSBindingSource;
-            // 
-            // animeTableAdapter
-            // 
-            this.animeTableAdapter.ClearBeforeFill = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -133,11 +114,30 @@
             this.searchTermDataGridViewTextBoxColumn.HeaderText = "SearchTerm";
             this.searchTermDataGridViewTextBoxColumn.Name = "searchTermDataGridViewTextBoxColumn";
             // 
+            // animeBindingSource
+            // 
+            this.animeBindingSource.DataMember = "Anime";
+            this.animeBindingSource.DataSource = this.animeDSBindingSource;
+            // 
+            // animeDSBindingSource
+            // 
+            this.animeDSBindingSource.DataSource = this.animeDS;
+            this.animeDSBindingSource.Position = 0;
+            // 
+            // animeDS
+            // 
+            this.animeDS.DataSetName = "AnimeDS";
+            this.animeDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // animeTableAdapter
+            // 
+            this.animeTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(550, 389);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -145,9 +145,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.animeDS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.animeDSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.animeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animeDSBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.animeDS)).EndInit();
             this.ResumeLayout(false);
 
         }
