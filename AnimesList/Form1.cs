@@ -17,12 +17,14 @@ namespace AnimesList
         {
             List<AnimeSchedule> animes = new List<AnimeSchedule>();
 
-            Data.SchedulesDataTable t = new Data.SchedulesDataTable();
-
-            foreach (DataRow row in t.Rows)
+            Data.AnimeDataTable t= new Data.AnimeDataTable();
+            DataTableAdapters.AnimeTableAdapter dt = new DataTableAdapters.AnimeTableAdapter();
+            dt.Fill(t);
+            foreach (Data.AnimeRow row in t.Rows)
             {
-                animes.Add(new AnimeSchedule(row["name"].ToString(), row["Time"].ToString()));
+                animes.Add(new AnimeSchedule(row["name"].ToString(), row["Time"].ToString(), row.TimeZone,row.SearchTerm,row.Enabled));
             }
+            animes = animes.Where(a => a.Enabled).ToList();
             return animes;
         }
         public Form1()
@@ -82,6 +84,8 @@ namespace AnimesList
             dataGridView1.Columns.Add("Name", "Name");
             dataGridView1.Columns.Add("Time", "Time");
             dataGridView1.Columns.Add("Eta", "Eta");
+            dataGridView1.Columns.Add("SearchTerm", "SearchTerm");
+            dataGridView1.Columns[3].Visible = false;
             redraw();
 
             Timer t = new Timer();
@@ -106,11 +110,11 @@ namespace AnimesList
             dataGridView1.Rows.Clear();
             foreach (var item in animestocome)
             {
-                dataGridView1.Rows.Add(item.Name, DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).ToLocalTime().ToString("dddd HH:mm"), TimeSpan.FromMinutes((int)DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).Subtract(DateTime.UtcNow).TotalMinutes).ToString(@"d\d\ hh\:mm"));
+                dataGridView1.Rows.Add(item.Name, DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).ToLocalTime().ToString("dddd HH:mm"), TimeSpan.FromMinutes((int)DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).Subtract(DateTime.UtcNow).TotalMinutes).ToString(@"d\d\ hh\:mm"),item.SearchTerm);
             }
             foreach (var item in animesbygone)
             {
-                dataGridView1.Rows.Add(item.Name, DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).AddHours(168).ToLocalTime().ToString("dddd HH:mm"), TimeSpan.FromMinutes((int)DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).Subtract(DateTime.UtcNow).Add(new TimeSpan(168, 0, 0)).TotalMinutes).ToString(@"d\d\ hh\:mm"));
+                dataGridView1.Rows.Add(item.Name, DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).AddHours(168).ToLocalTime().ToString("dddd HH:mm"), TimeSpan.FromMinutes((int)DateTime.UtcNow.Date.AddDays(item.DOW - DateTime.UtcNow.DayOfWeek).Add(item.TOD).Subtract(DateTime.UtcNow).Add(new TimeSpan(168, 0, 0)).TotalMinutes).ToString(@"d\d\ hh\:mm"),item.SearchTerm);
             }
             dataGridView1.Height = (int)(dataGridView1.Rows.Count * 20.8);
             this.Height = (int)(dataGridView1.Rows.Count * 20.8) + 40;
@@ -121,9 +125,10 @@ namespace AnimesList
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dg = (DataGridView)sender;
+            
             if (e.ColumnIndex == 0)
             {
-                Process.Start("http://tokyotosho.info/search.php?terms=" + dg.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                Process.Start("http://tokyotosho.info/search.php?terms=" + dg.Rows[e.RowIndex].Cells[3].Value.ToString());
 
 
             }
@@ -134,10 +139,15 @@ namespace AnimesList
         public string Name { get; set; }
         public TimeSpan TOD { get; set; }
         public DayOfWeek DOW { get; set; }
+        public string SearchTerm { get; set; }
+        public bool Enabled { get; set; }
         //public DateTime BroadcastStart { get; set; }
         //public DateTime BroadcastEnd { get; set; }
-        public AnimeSchedule(string name, string time)
+        public AnimeSchedule(string name, string time,int? timeOffset,string searchTerm,bool isEnabled)
         {
+            int offset = 9;
+            if (timeOffset.HasValue)
+                offset = timeOffset.Value;
             Name = name;
             DOW = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), time.Split(' ')[0], true);
             if (DateTime.Parse(time.Split(' ')[1]).TimeOfDay.TotalHours < 9)
@@ -146,6 +156,13 @@ namespace AnimesList
                 else
                     DOW -= 1;
             TOD = DateTime.Parse(time.Split(' ')[1]).AddHours(-9).TimeOfDay;
+
+            if (string.IsNullOrEmpty(searchTerm))
+                SearchTerm = Name;
+            else
+                SearchTerm = searchTerm;
+
+            Enabled = isEnabled;
             //BroadcastStart = bs;
             //BroadcastEnd = be;
         }
