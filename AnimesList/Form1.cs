@@ -128,7 +128,7 @@ namespace AnimesList
             
             if (e.ColumnIndex == 0)
             {
-                Process.Start("http://tokyotosho.info/search.php?terms=" + dg.Rows[e.RowIndex].Cells[3].Value.ToString());
+                Process.Start("http://www.nyaa.se/?page=search&term=" + dg.Rows[e.RowIndex].Cells[3].Value.ToString());
 
 
             }
