@@ -659,7 +659,7 @@ namespace AnimesList {
             public string SearchTerm {
                 get {
                     if (this.IsSearchTermNull()) {
-                        return string.Empty;
+                        return null;
                     }
                     else {
                         return ((string)(this[this.tableAnime.SearchTermColumn]));
@@ -892,7 +892,7 @@ namespace AnimesList.DataTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlServerCe.SqlCeConnection();
-            this._connection.ConnectionString = global::AnimesList.Properties.Settings.Default.animeConnectionString1;
+            this._connection.ConnectionString = global::AnimesList.Properties.Settings.Default.animeConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

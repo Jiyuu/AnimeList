@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace AnimesList
 {
-    public partial class Form1 : ApplicationDesktopToolbar
+    public partial class Form1 : Form
     {
         public static List<AnimeSchedule> getAnimeSchedules()
         {

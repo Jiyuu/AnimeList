@@ -10,7 +10,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnimeTableAdapter" GeneratorDataComponentClassName="AnimeTableAdapter" Name="Anime" UserDataComponentName="AnimeTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="animeConnectionString1 (Settings)" DbObjectName="Anime" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="animeConnectionString (Settings)" DbObjectName="Anime" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [Anime] WHERE (([Name] = @Original_Name))</CommandText>
@@ -69,7 +69,7 @@
   <xs:element name="Data" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Data" msprop:Generator_UserDSName="Data">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Anime" msprop:Generator_TableClassName="AnimeDataTable" msprop:Generator_TableVarName="tableAnime" msprop:Generator_TablePropName="Anime" msprop:Generator_RowDeletingName="AnimeRowDeleting" msprop:Generator_RowChangingName="AnimeRowChanging" msprop:Generator_RowEvHandlerName="AnimeRowChangeEventHandler" msprop:Generator_RowDeletedName="AnimeRowDeleted" msprop:Generator_UserTableName="Anime" msprop:Generator_RowChangedName="AnimeRowChanged" msprop:Generator_RowEvArgName="AnimeRowChangeEvent" msprop:Generator_RowClassName="AnimeRow">
+        <xs:element name="Anime" msprop:Generator_TableClassName="AnimeDataTable" msprop:Generator_TableVarName="tableAnime" msprop:Generator_RowChangedName="AnimeRowChanged" msprop:Generator_TablePropName="Anime" msprop:Generator_RowDeletingName="AnimeRowDeleting" msprop:Generator_RowChangingName="AnimeRowChanging" msprop:Generator_RowEvHandlerName="AnimeRowChangeEventHandler" msprop:Generator_RowDeletedName="AnimeRowDeleted" msprop:Generator_RowClassName="AnimeRow" msprop:Generator_UserTableName="Anime" msprop:Generator_RowEvArgName="AnimeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
@@ -88,7 +88,7 @@
               </xs:element>
               <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:boolean" />
               <xs:element name="TimeZone" msprop:nullValue="9" msprop:Generator_ColumnPropNameInRow="TimeZone" msprop:Generator_ColumnVarNameInTable="columnTimeZone" msprop:Generator_ColumnPropNameInTable="TimeZoneColumn" msprop:Generator_UserColumnName="TimeZone" type="xs:int" minOccurs="0" />
-              <xs:element name="SearchTerm" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="SearchTerm" msprop:Generator_ColumnVarNameInTable="columnSearchTerm" msprop:Generator_ColumnPropNameInTable="SearchTermColumn" msprop:Generator_UserColumnName="SearchTerm" minOccurs="0">
+              <xs:element name="SearchTerm" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="SearchTerm" msprop:Generator_ColumnVarNameInTable="columnSearchTerm" msprop:Generator_ColumnPropNameInTable="SearchTermColumn" msprop:Generator_UserColumnName="SearchTerm" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />

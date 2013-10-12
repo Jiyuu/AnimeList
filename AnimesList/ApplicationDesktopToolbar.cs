@@ -686,22 +686,6 @@ namespace AnimesList
             }
         }
 
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // ApplicationDesktopToolbar
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "ApplicationDesktopToolbar";
-            this.Load += new System.EventHandler(this.ApplicationDesktopToolbar_Load);
-            this.ResumeLayout(false);
-
-        }
-
-        private void ApplicationDesktopToolbar_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
