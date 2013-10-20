@@ -79,7 +79,7 @@ namespace AnimesList
             //RegisterBar();
             animes = getAnimeSchedules();
 
-
+            oldAnimestocome = animes.Where(a => a.CompareTo(DateTime.UtcNow) > 0).ToList();
 
             dataGridView1.Columns.Add("Name", "Name");
             dataGridView1.Columns.Add("Time", "Time");
@@ -99,6 +99,7 @@ namespace AnimesList
             redraw();
 
         }
+        List<AnimeSchedule> oldAnimestocome;
         void redraw()
         {
             List<AnimeSchedule> animestocome = animes.Where(a => a.CompareTo(DateTime.UtcNow) > 0).ToList();
@@ -120,6 +121,8 @@ namespace AnimesList
             this.Height = (int)(dataGridView1.Rows.Count * 20.8) + 40;
             dataGridView1.Width = GetDgvMinWidth(dataGridView1);
             this.Width = GetDgvMinWidth(dataGridView1) + 16;
+
+            oldAnimestocome = animestocome;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -128,10 +131,27 @@ namespace AnimesList
             
             if (e.ColumnIndex == 0)
             {
-                Process.Start("http://www.nyaa.se/?page=search&term=" + dg.Rows[e.RowIndex].Cells[3].Value.ToString());
+                Process.Start(AnimesList.Properties.Settings.Default.SearchPath + dg.Rows[e.RowIndex].Cells[3].Value.ToString());
 
 
             }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                AnimeListIcon.Visible = true;
+                //notifyIcon1.ShowBalloonTip(3000);
+                this.ShowInTaskbar = false;
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+            AnimeListIcon.Visible = false;
         }
     }
     public class AnimeSchedule : IComparable

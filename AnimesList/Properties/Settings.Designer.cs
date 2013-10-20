@@ -33,14 +33,15 @@ namespace AnimesList.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=\"D:\\BU2\\My Documents\\Visual Studio 2012\\Projects\\AnimesList\\AnimeList" +
-            "Editor\\anime.sdf\"")]
-        public string animeConnectionString1 {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://fanzub.com/?q=")]
+        public string SearchPath {
             get {
-                return ((string)(this["animeConnectionString1"]));
+                return ((string)(this["SearchPath"]));
+            }
+            set {
+                this["SearchPath"] = value;
             }
         }
     }
