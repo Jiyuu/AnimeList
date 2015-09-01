@@ -78,7 +78,7 @@ namespace ReleaseAnalysis
                 item.FileName = r.Replace(item.FileName, "");
             }
 
-            r = new Regex("[^\\s\\d\\w-]");//removing all remaining non digit/letter/space/- charters to cleanup the output
+            r = new Regex("[^\\s\\d\\w-.]");//removing all remaining non digit/letter/space/- charters to cleanup the output
             foreach (var item in records)
             {
                 item.FileName = r.Replace(item.FileName, "");
@@ -116,6 +116,7 @@ namespace ReleaseAnalysis
 
             var tmp = episodesList.GroupBy(ep=>ep.EpisodeNumber);
             episodesList = tmp.Select(g => g.OrderBy(ep => ep.Timestamp).First()).ToList();
+            dataGridView1.AutoGenerateColumns = false;
 
             dataGridView1.DataSource = episodesList;
             
@@ -137,6 +138,7 @@ namespace ReleaseAnalysis
         public bool Ready { get; set; }
         public string FileName { get; set; }
         public DateTime Timestamp { get; set; }
+        public string DisplayTime { get { return Timestamp.ToString("dddd HH:mm"); } }
 
         public string Group { get; set; }
         public string Codec { get; set; }
